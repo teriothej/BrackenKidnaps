@@ -245,7 +245,7 @@ namespace SnatchinBracken.Patches
                         StopGradualDamageCoroutine(flowermanAI, player);
                         int id = SharedData.Instance.PlayerIDs[player];
                         SharedData.UpdateTimestampNow(flowermanAI, player);
-                        FinishKillAnimationNormally(flowermanAI, player, id);
+                       
                     }
                     else
                     {
@@ -335,7 +335,7 @@ namespace SnatchinBracken.Patches
                 __instance.creatureAnimator.SetBool("carryingBody", value: false);
 
                 // Let the GradualDamage coroutine handle the actual death part if they want gradual
-                FinishKillAnimationNormally(__instance, player, (int)id);
+               
             }
             return false;
         }
@@ -356,13 +356,7 @@ namespace SnatchinBracken.Patches
             return false;
         }
 
-        static void FinishKillAnimationNormally(FlowermanAI __instance, PlayerControllerB playerControllerB, int playerId)
-        {
-            mls.LogInfo("Bracken found good spot to kill, killing player.");
-            __instance.inSpecialAnimationWithPlayer = playerControllerB;
-            playerControllerB.inSpecialInteractAnimation = true;
-            __instance.KillPlayerAnimationClientRpc(playerId);
-        }
+
 
         static bool RollForChance(int percentChance)
         {
